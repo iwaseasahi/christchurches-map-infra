@@ -15,10 +15,10 @@ resource "aws_route53_record" "soa" {
   zone_id = aws_route53_zone.main.zone_id
   type    = "SOA"
   name    = "christchurches-map.site"
+  ttl     = 900
   records = [
     "ns-1881.awsdns-43.co.uk. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400",
   ]
-  ttl     = 900
 }
 
 resource "aws_route53_record" "cname_acm-validations" {
