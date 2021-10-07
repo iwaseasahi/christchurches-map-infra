@@ -3,4 +3,10 @@ resource "aws_db_instance" "main" {
   copy_tags_to_snapshot = true
   skip_final_snapshot   = true
   max_allocated_storage = 1000
+  tags = {
+    "Name" = "christchurches-map-ecs-rds"
+  }
+  tags_all = {
+    "Name" = "christchurches-map-ecs-rds"
+  }
 }
