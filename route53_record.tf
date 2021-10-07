@@ -1,3 +1,8 @@
+variable "aws_route53_record_cname_acm-validations_name" {}
+variable "aws_route53_record_cname_acm-validations_record" {}
+variable "aws_route53_record_www_alias_name" {}
+variable "aws_route53_record_www_alias_zone_id" {}
+
 resource "aws_route53_record" "ns" {
   zone_id = aws_route53_zone.main.zone_id
   type    = "NS"
@@ -22,7 +27,22 @@ resource "aws_route53_record" "soa" {
 }
 
 resource "aws_route53_record" "cname_acm-validations" {
+  zone_id = aws_route53_zone.main.zone_id
+  type    = "CNAME"
+  name    = var.aws_route53_record_cname_acm-validations_name
+  ttl     = 300
+  records = [
+    var.aws_route53_record_cname_acm-validations_record,
+  ]
 }
 
 resource "aws_route53_record" "www" {
+  zone_id = aws_route53_zone.main.zone_id
+  type    = "A"
+  name    = "www.christchurches-map.site"
+  alias {
+    evaluate_target_health = true
+    name                   = var.aws_route53_record_www_alias_name
+    zone_id                = var.aws_route53_record_www_alias_zone_id
+  }
 }
