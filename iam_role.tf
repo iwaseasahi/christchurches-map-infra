@@ -26,7 +26,7 @@ resource "aws_iam_role" "ecs_task_execution_role" {
       {
         Action = "sts:AssumeRole"
         Effect = "Allow"
-        Sid = ""
+        Sid    = ""
         Principal = {
           Service = "ecs-tasks.amazonaws.com"
         }
