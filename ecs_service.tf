@@ -1,7 +1,7 @@
 resource "aws_ecs_service" "main" {
   name            = "cc-map-service-bg-deploy"
   cluster         = aws_ecs_cluster.main.id
-  task_definition = aws_ecs_task_definition.main.arn
+  task_definition = "christchurches-map-task:63"
   desired_count   = 1
   iam_role        = "aws-service-role"
 
