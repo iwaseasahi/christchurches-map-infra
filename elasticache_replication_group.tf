@@ -19,7 +19,7 @@ resource "aws_elasticache_replication_group" "main" {
   parameter_group_name = "default.redis6.x"
   port                 = 6379
   security_group_ids = [
-    "sg-031ed8836c6d18abb"
+    aws_security_group.christchurches-map-ecs-redis.id
   ]
   subnet_group_name          = "christchurches-map-ecs-subnet-group"
   transit_encryption_enabled = false
